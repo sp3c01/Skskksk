@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Pagamento</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #0047ab; /* Cor azul forte */
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .payment-container {
+            text-align: center;
+            background-color: #0047ab; /* Cor azul forte */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #ecf0f1;
+            position: relative; /* Adiciona posicionamento relativo */
+            width: 80%; /* Define a largura */
+            max-width: 400px; /* Define a largura máxima */
+        }
+
+        .qr-code {
+            margin-bottom: 20px;
+        }
+
+        #backToGameBtn {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        #backToGameBtn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h2>Escaneie o QR code para realizar o pagamento:</h2>
+        <div class="qr-code">
+            <img src="https://i.im.ge/2024/06/05/KwRlUx.1000070533.jpeg" alt="QR Code" width="200" height="200">
+        </div>
+        <p>Ou utilize o código PIX abaixo:</p>
+        <textarea readonly rows="5" cols="50">
+00020126580014BR.GOV.BCB.PIX0136bd8d130d-aeca-4442-8cac-8f5c78318d9b5204000053039865802BR5924Francisco Lopes Oliveira6009SAO PAULO62140510rhKhL7pS8o6304309A
+        </textarea>
+        <!-- Botão para voltar para o jogo -->
+        <button id="backToGameBtn">Voltar para o jogo</button>
+    </div>
+
+    <script>
+        // Função para redirecionar de volta para o jogo ao clicar no botão
+        document.getElementById('backToGameBtn').addEventListener('click', function() {
+            // Obtém o valor do depósito da URL
+            let depositAmount = new URLSearchParams(window.location.search).get('amount');
+            // Redireciona para o jogo com o valor do depósito
+            window.location.href = `index.html?depositAmount=${depositAmount}`;
+        });
+    </script>
+</body>
+</html>
